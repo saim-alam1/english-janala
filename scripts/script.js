@@ -5,6 +5,19 @@ const loadLessons = () => {
 };
 
 const loadLevelWords = (id) => {
+  const wordContainer = document.getElementById("word-container");
+  if (!id) {
+    wordContainer.innerHTML = `<div class="col-span-3 flex flex-col items-center justify-center">
+          <p class="font-bangla text-xl text-[#79716B] my-4">
+            আপনি এখনো কোন Lesson Select করেন নি
+          </p>
+          <h2 class="font-bangla text-4xl font-medium">একটি Lesson Select করুন।</h2>
+        </div>`;
+    return;
+  }
+
+  wordContainer.innerHTML = "";
+
   const url = `https://openapi.programming-hero.com/api/level/${id}`;
   fetch(url)
     .then((res) => res.json())
@@ -13,10 +26,21 @@ const loadLevelWords = (id) => {
 
 const displayLevelWords = (words) => {
   const wordContainer = document.getElementById("word-container");
-  wordContainer.innerHTML = "";
+
+  if (words.length === 0) {
+    wordContainer.innerHTML = `<div class="col-span-3 flex flex-col items-center justify-center">
+          <img src="./assets/alert-error.png" alt="Error Alert Image" />
+          <p class="font-bangla text-xl text-[#79716B] my-4">
+            এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।
+          </p>
+          <h2 class="font-bangla text-4xl font-medium">নেক্সট Lesson এ যান</h2>
+        </div>`;
+    return;
+  }
 
   words.forEach((word) => {
     console.log(word);
+
     const cardDiv = document.createElement("div");
     cardDiv.innerHTML = `
     <div class="card bg-white text-black">
@@ -39,23 +63,6 @@ const displayLevelWords = (words) => {
     `;
     wordContainer.append(cardDiv);
   });
-
-  // for (let word of words) {
-  //   const cardDiv = document.createElement("div");
-  //   cardDiv.innerHTML = `
-  //   <div class="card bg-white text-black">
-  //         <div class="card-body items-center text-center">
-  //           <h2 class="card-title">Cookies!</h2>
-  //           <p>We are using cookies for no reason.</p>
-  //           <div class="w-11/12 flex items-center justify-around">
-  //             <button class="btn btn-primary">Accept</button>
-  //             <button class="btn btn-secondary">Deny</button>
-  //           </div>
-  //         </div>
-  //       </div>
-  //   `;
-  //   wordContainer.append(cardDiv);
-  // }
 };
 
 // Showing Lessons Buttons
