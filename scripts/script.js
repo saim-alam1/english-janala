@@ -45,9 +45,9 @@ const displayLevelWords = (words) => {
     cardDiv.innerHTML = `
     <div class="card bg-white text-black">
           <div class="card-body items-center text-center">
-            <h2 class="card-title font-bold text-3xl">${word.word}</h2>
+            <h2 class="card-title font-bold text-3xl">${word.word ? word.word : "শব্দ পাওয়া যাইনি"}</h2>
             <p class="font-medium text-xl my-6">Meaning / Pronunciation:</p>
-            <h2 class="card-title font-bangla font-semibold text-3xl text-[#18181B]">"${word.meaning}"</h2>
+            <h2 class="card-title font-bangla font-semibold text-3xl text-[#18181B]">"${word.meaning ? word.meaning : "অর্থ পাওয়া যাইনি"} / ${word.pronunciation ? word.pronunciation : "Pronunciation পাওয়া যাইনি"}"</h2>
             <div class="w-11/12 flex items-center justify-around mt-7">
               <button class="btn bg-[#1A91FF50]">
                 <i
