@@ -7,7 +7,7 @@ const loadLessons = () => {
 const loadLevelWords = (id) => {
   const wordContainer = document.getElementById("word-container");
   if (!id) {
-    wordContainer.innerHTML = `<div class="col-span-3 flex flex-col items-center justify-center">
+    wordContainer.innerHTML = `<div class="col-span-3 text-center">
           <p class="font-bangla text-xl text-[#79716B] my-4">
             আপনি এখনো কোন Lesson Select করেন নি
           </p>
@@ -28,8 +28,8 @@ const displayLevelWords = (words) => {
   const wordContainer = document.getElementById("word-container");
 
   if (words.length === 0) {
-    wordContainer.innerHTML = `<div class="col-span-3 flex flex-col items-center justify-center">
-          <img src="./assets/alert-error.png" alt="Error Alert Image" />
+    wordContainer.innerHTML = `<div class="col-span-3 text-center">
+          <img class="mx-auto" src="./assets/alert-error.png" alt="Error Alert Image" />
           <p class="font-bangla text-xl text-[#79716B] my-4">
             এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।
           </p>
