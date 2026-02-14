@@ -13,6 +13,12 @@ const manageSpinner = (status) => {
   }
 };
 
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+
 const loadLessons = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
@@ -86,7 +92,7 @@ const displayLevelWords = (words) => {
                   class="fa-solid fa-circle-exclamation text-[#374957] text-[16px]"
                 ></i>
               </button>
-              <button class="btn bg-[#1A91FF50]">
+              <button onClick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF50]">
                 <i class="fa-solid fa-volume-high text-[#374957] text-[16px]"></i>
               </button>
             </div>
